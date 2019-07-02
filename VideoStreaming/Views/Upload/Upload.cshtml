@@ -1,0 +1,47 @@
+﻿@model VideoStreaming.Entities.VideoFile
+@{
+    ViewData["Title"] = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload</h2>
+
+<div class="container">
+    <div class="row">
+        <div id="imgdiv2">
+            <img id="img2" style="display:none" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Upload" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="data" class="control-label"></label>
+                    <input asp-for="data" type="file" id="_file" />
+                    <span asp-validation-for="data" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input id="inputFile" type="submit" value="Upload" class="btn btn-default" disabled="disabled" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+         $("#_file").change(
+            function(){
+                if ($(this).val()) {
+                    $('input:submit').attr('disabled',false);
+                } 
+            }
+            );
+        });
+    </script>
+}
+

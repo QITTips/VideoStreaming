@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div class="container-fluid">
+        <div class="row">
+
+            @foreach (int id in Model)
+            {
+                <div class="col-md-3">
+                    <video class="videoElemnt" controls playsinline muted loop height="250px" width="200px">
+                        <source src="VideoStream/GetVideo/@id" type="video/mp4" />
+                    </video>
+                </div>
+            }
+
+        </div>
+    </div>
